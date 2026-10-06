@@ -1,0 +1,27 @@
+(* .ocamlinit - Script exécuté automatiquement au lancement de ocaml ou utop.
+   Permet de préconfigurer l'environnement interactif avec les librairies
+   et modules fréquemment utilisés. *)
+
+(* Initialisation de findlib (ocamlfind) pour #require *)
+#use "topfind";;
+
+(* Activation de down: améliore l'interpréteur ocaml avec autocomplétion et 
+   historique *)
+#use "down.top";;
+
+(* Ajout des chemins vers les objets compilés du projet *)
+#directory "_build/default/lib/.resolution.objs/byte";;
+#directory "_build/default/lib/demo/.demo.objs/byte";;
+#directory "_build/default/lib/parseur/.parseur.objs/public_cmi";;
+
+(* Chargement des librairies compilées du projet *)
+#load "_build/default/lib/parseur/parseur.cma";;
+#load "_build/default/lib/resolution.cma";;
+#load "_build/default/lib/demo/demo.cma";;
+
+(* Ouverture des modules pour accès direct à leurs définitions *)
+open Parseur;;
+open Tp_types;;
+open Resolution;;  
+open Demo;;
+open List;;

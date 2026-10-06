@@ -1,0 +1,19 @@
+# Ce fichier est généré automatiquement par dune ou créé manuellement.
+# Il est nécessaire pour déclarer les bibliothèques publiques et générer la documentation.
+
+opam-version: "2.0"
+name: "tp1"
+version: "1.0.0"
+synopsis: "TP1 IFT-3000 - Résolution de problèmes logiques"
+maintainer: ["IFT-3000"]
+authors: ["IFT-3000"]
+depends: [
+  "ocaml" {>= "4.14"}
+  "dune" {>= "3.0"}
+  "menhir"
+  "js_of_ocaml"
+  "js_of_ocaml-ppx"
+]
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+]

@@ -1,0 +1,607 @@
+/**
+ * Styles personnalisés pour le démonstrateur par résolution
+ * IFT-3000 - Langages de programmation - Hiver 2026
+ *
+ * Ce fichier complète Bootstrap avec des personnalisations
+ * spécifiques à l'application.
+ */
+
+/* ==========================================================================
+   VARIABLES CSS PERSONNALISÉES
+   ========================================================================== */
+
+:root {
+  /* Palette ULaval */
+  --ulaval-rouge: #e30513;
+  --ulaval-or: #ffc103;
+  --ulaval-gris-fonce: #2c2a29;
+  --ulaval-gris: #524a4e;
+  --ulaval-gris-clair: #f5f5f5;
+
+  /* Couleurs de l'application */
+  --couleur-primaire: var(--ulaval-gris);
+  --couleur-primaire-hover: #6a6265;
+  --couleur-accent: var(--ulaval-rouge);
+  --couleur-accent-or: var(--ulaval-or);
+  --couleur-bordure: #dee2e6;
+  --couleur-texte: #ffffff;
+  --couleur-fond-section: #ffffff;
+  --couleur-fond-page: var(--ulaval-gris-clair);
+
+  /* Espacements */
+  --espacement-section: 1.5rem;
+  --border-radius: 0.5rem;
+}
+
+/* ==========================================================================
+   STYLES DE BASE
+   ========================================================================== */
+
+body {
+  background-color: var(--couleur-fond-page);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.container {
+  flex: 1;
+  padding-top: var(--espacement-section);
+  padding-bottom: var(--espacement-section);
+}
+
+/* ==========================================================================
+   PERSONNALISATION DE L'ACCORDION BOOTSTRAP (HEADER)
+   ========================================================================== */
+
+.accordion {
+  --bs-accordion-btn-bg: var(--couleur-primaire);
+  --bs-accordion-btn-color: var(--couleur-texte);
+  --bs-accordion-active-bg: var(--couleur-primaire);
+  --bs-accordion-active-color: var(--couleur-texte);
+  --bs-accordion-border-radius: 0;
+  --bs-accordion-border-color: var(--ulaval-gris-fonce);
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-bg: var(--couleur-primaire-hover);
+  --bs-accordion-color: var(--couleur-texte);
+}
+
+.accordion-button::after {
+  filter: invert(1);
+}
+
+/* ==========================================================================
+   CARTES DE SECTION
+   ========================================================================== */
+
+.card-section {
+  background-color: var(--couleur-fond-section);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
+  margin-bottom: var(--espacement-section);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-section-titre {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--couleur-primaire);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--couleur-accent);
+}
+
+/* ==========================================================================
+   GRILLE DE RÉFÉRENCE (SYNTAXE + RÈGLE)
+   ========================================================================== */
+
+.reference-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reference-item {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.formule-container {
+  background-color: var(--couleur-fond-page);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1rem;
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Tableau de syntaxe compact (3 colonnes) */
+.syntax-table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: var(--couleur-fond-page);
+  border: 1px solid var(--couleur-bordure);
+  border-radius: var(--border-radius);
+  font-size: 0.85rem;
+}
+
+.syntax-table td {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--couleur-bordure);
+}
+
+.syntax-table .syntax-left {
+  text-align: right;
+  padding-right: 0.3rem;
+}
+
+.syntax-table .syntax-arrow {
+  text-align: center;
+  padding: 0.35rem 0.6rem;
+  color: var(--ulaval-gris);
+}
+
+.syntax-table .syntax-right {
+  text-align: left;
+  padding-left: 0.3rem;
+}
+
+.syntax-table code {
+  background-color: #fff;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  color: var(--ulaval-rouge);
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   ACCORDION RÉFÉRENCE RAPIDE
+   ========================================================================== */
+
+.accordion-reference {
+  --bs-accordion-bg: var(--couleur-fond-section);
+  --bs-accordion-border-color: var(--couleur-bordure);
+  --bs-accordion-btn-bg: var(--couleur-fond-section);
+  --bs-accordion-btn-color: var(--couleur-primaire);
+  --bs-accordion-active-bg: var(--couleur-fond-section);
+  --bs-accordion-active-color: var(--couleur-primaire);
+  --bs-accordion-btn-focus-box-shadow: none;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.accordion-reference .accordion-item {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--couleur-bordure);
+}
+
+.accordion-reference .accordion-button {
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  position: relative;
+}
+
+/* Ligne rouge sous le titre avec marges - utilise le bouton pour éviter les problèmes de z-index */
+.accordion-reference .accordion-button::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 2px;
+  background-color: var(--couleur-accent);
+  z-index: 1;
+}
+
+.accordion-reference .accordion-body {
+  padding: 1rem 1.25rem;
+  color: #333; /* Texte sombre pour le contenu */
+}
+
+.accordion-reference .reference-item p {
+  color: var(--couleur-primaire);
+}
+
+.accordion-reference .syntax-table {
+  color: #333;
+}
+
+.accordion-reference .formule-container {
+  color: #333;
+}
+
+/* ==========================================================================
+   ZONE DE SAISIE
+   ========================================================================== */
+
+/* Désactivation de l'étirement des boutons (stretch) pour qu'ils gardent leur taille fixe */
+.input-group {
+  align-items: flex-start;
+}
+
+/* Textarea : coins gauches arrondis */
+#enonce {
+  border-color: var(--couleur-bordure);
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  resize: vertical;
+}
+
+#enonce:focus {
+  border-color: var(--couleur-accent);
+  box-shadow: 0 0 0 0.2rem rgba(227, 5, 19, 0.15);
+}
+
+/* Bouton fichier (milieu) : aucun coin arrondi */
+#bouton-fichier {
+  border-color: var(--couleur-bordure);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bouton Valider (fin) : coins droits arrondis */
+#bouton-Ok {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+/* Hauteur et alignement uniformes des 3 éléments via font-size unique */
+#enonce,
+#bouton-fichier,
+#bouton-Ok {
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.5;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem; /* Taille standard pour uniformité avec le reste de la page */
+}
+
+/* Force une hauteur initiale mathématiquement identique (font + padding + bordure) */
+#enonce {
+  min-height: calc(1.5em + 0.75rem + 2px);
+  position: relative;
+  z-index: 2;
+}
+
+#bouton-fichier,
+#bouton-Ok {
+  height: calc(1.5em + 0.75rem + 2px);
+  margin-left: -1px; /* Chevauchement pour éviter les doubles bordures ou espaces */
+}
+
+/* Hover des boutons */
+#bouton-fichier:hover,
+#bouton-Ok:hover {
+  background-color: var(--couleur-primaire);
+  border-color: var(--couleur-primaire);
+  color: var(--couleur-texte);
+}
+
+/* Style spécifique bouton Valider */
+.btn-valider {
+  background-color: var(--couleur-accent);
+  border-color: var(--couleur-accent);
+  color: var(--couleur-texte);
+  font-weight: 500;
+}
+
+.btn-valider:hover {
+  background-color: #c50411;
+  border-color: #c50411;
+  color: var(--couleur-texte);
+}
+
+/* ==========================================================================
+   ZONE DE RÉSULTAT
+   ========================================================================== */
+
+.resultat-container {
+  background-color: var(--couleur-fond-section);
+  border: 1px solid var(--couleur-bordure);
+  border-left: 4px solid var(--couleur-accent);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.resultat-titre {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--couleur-primaire);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#target {
+  text-align: left;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   BOUTONS D'ACTION (PDF, etc.)
+   ========================================================================== */
+
+.btn-action-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--couleur-bordure);
+}
+
+.btn-pdf {
+  background-color: var(--couleur-accent-or);
+  border-color: var(--couleur-accent-or);
+  color: var(--ulaval-gris-fonce);
+  font-weight: 500;
+}
+
+.btn-pdf:hover {
+  background-color: #e5ad03;
+  border-color: #e5ad03;
+  color: var(--ulaval-gris-fonce);
+}
+
+/* ==========================================================================
+   MESSAGES D'ERREUR
+   ========================================================================== */
+
+#msg {
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  display: inline-block;
+}
+
+#msg:empty {
+  display: none;
+}
+
+#msg:not(:empty) {
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-footer {
+  margin-top: auto;
+  background-color: var(--couleur-primaire);
+  color: var(--couleur-texte);
+}
+
+.site-footer a {
+  color: var(--couleur-texte);
+  text-decoration: underline;
+}
+
+.site-footer a:hover {
+  color: var(--couleur-accent);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Petits écrans (téléphones) */
+@media (max-width: 576px) {
+  :root {
+    --espacement-section: 1rem;
+  }
+
+  .card-section {
+    padding: 1rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    border-radius: 0;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group .form-control,
+  .input-group .btn {
+    border-radius: var(--border-radius) !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .input-group .btn {
+    width: 100%;
+  }
+
+  .resultat-container {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .btn-action-group {
+    flex-direction: column;
+  }
+}
+
+/* Écrans moyens (tablettes) */
+@media (min-width: 577px) and (max-width: 991px) {
+  .card-section {
+    padding: 1.25rem;
+  }
+}
+
+/* Grands écrans */
+@media (min-width: 992px) {
+  main.container {
+    max-width: 900px;
+  }
+}
+
+/* ==========================================================================
+   GESTION DU CHARGEMENT INITIAL
+   ========================================================================== */
+
+/**
+ * Cache les éléments de résultat et d'erreur pendant le chargement
+ * initial de la page, pour éviter un flash de contenu non stylé (FOUC).
+ * La classe est retirée par reset() dans script.js.
+ */
+body.initial-hide #target,
+body.initial-hide #msg {
+  display: none;
+}
+
+/* ==========================================================================
+   UTILITAIRES
+   ========================================================================== */
+
+.text-ulaval-rouge {
+  color: var(--ulaval-rouge);
+}
+
+.text-ulaval-or {
+  color: var(--ulaval-or);
+}
+
+.bg-ulaval-gris {
+  background-color: var(--ulaval-gris);
+}
+
+/* Lien dans l'en-tête accordion */
+.lien-resolution {
+  color: var(--ulaval-or);
+}
+
+/* Éléments cachés */
+.hidden-input {
+  display: none;
+}
+
+.hidden-section {
+  display: none;
+}
+
+/* Améliore la lisibilité des formules LaTeX */
+.MathJax {
+  font-size: 1.1em !important;
+}
+
+/* Animation subtile au hover des cartes */
+.card-section {
+  transition: box-shadow 0.2s ease;
+}
+
+.card-section:hover {
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   STYLES D'IMPRESSION (PDF)
+   ========================================================================== */
+
+/* En-tête d'impression - caché à l'écran */
+.print-header {
+  display: none;
+}
+
+@media print {
+  /* Configuration de la page */
+  @page {
+    size: letter;
+    margin: 1.5cm 2cm;
+  }
+
+  /* Cacher les éléments non nécessaires */
+  header,
+  footer,
+  .card-section,
+  .btn-action-group,
+  .resultat-titre {
+    display: none !important;
+  }
+
+  /* Réinitialiser le body */
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Afficher et styliser l'en-tête d'impression */
+  .print-header {
+    display: block !important;
+    text-align: center;
+    border-bottom: 3px solid #e30513;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+  }
+
+  .print-header h1 {
+    color: #e30513;
+    font-size: 18pt;
+    margin: 0 0 5px 0;
+  }
+
+  .print-header h2 {
+    color: #524a4e;
+    font-size: 14pt;
+    font-weight: normal;
+    margin: 0 0 5px 0;
+  }
+
+  .print-header p {
+    font-size: 10pt;
+    color: #888;
+    margin: 0;
+  }
+
+  /* Conteneur de résultat */
+  .resultat-container {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /* Zone de résultat (trace) */
+  #target {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  #target p {
+    text-align: left;
+    margin: 0;
+  }
+
+  /* MathJax dans l'impression */
+  .MathJax {
+    font-size: 1em !important;
+  }
+
+  mjx-container {
+    page-break-inside: avoid;
+  }
+
+  /* Masquer le conteneur principal Bootstrap */
+  main.container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}

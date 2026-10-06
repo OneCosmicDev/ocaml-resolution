@@ -1,0 +1,4 @@
+(library
+ (name demo)
+ (wrapped false)
+ (libraries resolution parseur))

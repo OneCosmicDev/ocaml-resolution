@@ -1,0 +1,10 @@
+# - Ceci est un commentaire
+# - Contenu du fichier vide, correct pour un travail individuel (donc Tp1)
+# - --> vscode utilisera la version d'ocamlformat installée sur votre machine
+# - Pour un travail collaboratif, afin de forcer tous les membres de l'équipe
+#   à utiliser la même version d'ocamlformat pour formatter uniformément le
+#   code (partagé), il est nécessaire de décommenter le commentaire suivant en
+#   fixant la version souhaitée (ce qui forcera le programmeur à installer et
+#   à utiliser la bonne version de l'outil de formattage de code)
+
+# version = 0.27.0

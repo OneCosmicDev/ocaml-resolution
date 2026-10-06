@@ -1,0 +1,11 @@
+(library
+ (name resolution)
+ (public_name tp1.resolution)
+ (modules resolution)
+ (wrapped false)
+ (libraries parseur))
+
+(env
+ (dev
+  (flags
+   (:standard -w -27-33))))

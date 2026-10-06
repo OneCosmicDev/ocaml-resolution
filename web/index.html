@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fr-CA">
+  <!-- =======================================================================
+     IFT-3000 - Langages de programmation - TP1 (Hiver 2026)
+     Démonstrateur automatique de propositions par résolution
+     ======================================================================= -->
+
+  <!-- HEAD ================================================================ -->
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Démonstrateur de propositions logiques
+      basé sur la méthode de résolution"
+    />
+    <meta name="author" content="IFT-3000, Université Laval" />
+
+    <title>IFT-3000, Langages de programmation, TP1 (Hiver 2026)</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Styles personnalisés -->
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+
+  <!-- BODY ================================================================ -->
+
+  <body class="initial-hide" onload="reset()">
+    <!-- HEADER: Barre d'en-tête avec accordion ============================ -->
+    <header>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne"
+              aria-expanded="false"
+              aria-controls="flush-collapseOne"
+            >
+              Démonstrateur automatique de propositions
+            </button>
+          </h2>
+          <div
+            id="flush-collapseOne"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <small>
+                Cette page permet de se pratiquer avec un démonstrateur
+                automatique de propositions, basé sur la
+                <a
+                  href="https://fr.wikipedia.org/wiki/R%C3%A8gle_de_r%C3%A9solution"
+                  target="_blank"
+                  rel="noopener"
+                  class="lien-resolution"
+                  >méthode de résolution</a
+                >, réalisé dans le cadre d'un travail pratique du cours
+                «Langages de programmation» (IFT-3000, Université Laval)
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN-TÊTE D'IMPRESSION (caché à l'écran, visible à l'impression) -->
+    <div class="print-header">
+      <h1>IFT-3000 – Langages de programmation</h1>
+      <h2>Démonstration automatique par résolution</h2>
+      <p>Hiver 2026 – Université Laval</p>
+    </div>
+
+    <!-- MAIN: Contenu principal =========================================== -->
+    <main class="container">
+      <!-- Section: Référence rapide (accordion repliable) -->
+      <div class="accordion accordion-reference mb-3" id="accordionReference">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingReference">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseReference"
+              aria-expanded="false"
+              aria-controls="collapseReference"
+            >
+              Référence rapide
+            </button>
+          </h2>
+          <div
+            id="collapseReference"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionReference"
+          >
+            <div class="accordion-body">
+              <div class="reference-grid">
+                <!-- Syntaxe: tableau sur 1 colonne -->
+                <div class="reference-item">
+                  <p class="fw-semibold mb-2">Syntaxe (saisie → affichage)</p>
+                  <table class="syntax-table">
+                    <tbody>
+                      <tr>
+                        <td class="syntax-left"><code>vrai</code></td>
+                        <td class="syntax-arrow">→</td>
+                        <td class="syntax-right">$1$</td>
+                      </tr>
+                      <tr>
+                        <td class="syntax-left"><code>faux</code></td>
+                        <td class="syntax-arrow">→</td>
+                        <td class="syntax-right">$0$</td>
+                      </tr>
+                      <tr>
+                        <td class="syntax-left"><code>non</code> $P$</td>
+                        <td class="syntax-arrow">→</td>
+                        <td class="syntax-right">$\neg P$</td>
+                      </tr>
+                      <tr>
+                        <td class="syntax-left">$P$ <code>et</code> $Q$</td>
+                        <td class="syntax-arrow">→</td>
+                        <td class="syntax-right">$P \land Q$</td>
+                      </tr>
+                      <tr>
+                        <td class="syntax-left">$P$ <code>ou</code> $Q$</td>
+                        <td class="syntax-arrow">→</td>
+                        <td class="syntax-right">$P \lor Q$</td>
+                      </tr>
+                      <tr>
+                        <td class="syntax-left">$P$ <code>=&gt;</code> $Q$</td>
+                        <td class="syntax-arrow">→</td>
+                        <td class="syntax-right">$P \Rightarrow Q$</td>
+                      </tr>
+                      <tr>
+                        <td class="syntax-left">
+                          $P$ <code>&lt;=&gt;</code> $Q$
+                        </td>
+                        <td class="syntax-arrow">→</td>
+                        <td class="syntax-right">$P \Leftrightarrow Q$</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- Règle de résolution -->
+                <div class="reference-item">
+                  <p class="fw-semibold mb-2">Règle de résolution</p>
+                  <div class="formule-container">
+                    $((p \vee q) \wedge (\neg p \vee r)) \Rightarrow (q \vee r)$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Saisie de l'énoncé -->
+      <section class="card-section">
+        <h2 class="card-section-titre">Énoncé à démontrer</h2>
+
+        <!-- Select des énoncés prédéfinis -->
+        <div class="mb-3">
+          <label for="lenonce" class="form-label">
+            Sélectionnez un énoncé prédéfini ou saisissez-en un :
+          </label>
+          <select
+            class="form-select"
+            aria-label="Liste des énoncés prédéfinis"
+            id="lenonce"
+            onchange="lenonce_change()"
+          >
+            <option selected value="aucun">-- Choisir un exemple --</option>
+            <!-- Exemples VRAIS (la conclusion découle des hypothèses) -->
+            <optgroup label="✓ Exemples vrais">
+              <option value="(* Modus ponens *) a =&gt; b; a; b">
+                Modus ponens : a =&gt; b; a; b
+              </option>
+              <option value="(* Modus tollens *) a =&gt; b; non b; non a">
+                Modus tollens : a =&gt; b; non b; non a
+              </option>
+              <option
+                value="(* Transitivité de l'équivalence *) p &lt;=&gt; q; q &lt;=&gt; r; p &lt;=&gt; r"
+              >
+                Transitivité : p &lt;=&gt; q; q &lt;=&gt; r; p &lt;=&gt; r
+              </option>
+              <option value="(* Élimination de la conjonction *) a et b; a">
+                Élimination ∧ : a et b; a
+              </option>
+              <option value="(* Tautologie: loi du tiers exclu *) a ou (non a)">
+                Tautologie : a ou (non a)
+              </option>
+              <option
+                value="(* Chaîne d'implications *) a =&gt; b; b =&gt; c; c =&gt; d; d =&gt; e; a; e"
+              >
+                Chaîne : a =&gt; b; b =&gt; c; c =&gt; d; d =&gt; e; a; e
+              </option>
+              <option value="(* Syllogisme disjonctif *) a ou b; non a; b">
+                Syllogisme disjonctif : a ou b; non a; b
+              </option>
+              <option
+                value="(* Preuve par cas *) a ou b; a =&gt; c; b =&gt; c; c"
+              >
+                Preuve par cas : a ou b; a =&gt; c; b =&gt; c; c
+              </option>
+              <option
+                value="(* Contraposition *) a =&gt; b; (non b) =&gt; (non a)"
+              >
+                Contraposition : a =&gt; b; (non b) =&gt; (non a)
+              </option>
+              <option value="(* Ex falso quodlibet *) faux; p">
+                Ex falso quodlibet : faux; p
+              </option>
+            </optgroup>
+            <!-- Exemples FAUX (sophismes / erreurs de raisonnement) -->
+            <optgroup label="✗ Exemples faux (sophismes)">
+              <option
+                value="(* Affirmation du conséquent - SOPHISME *) a =&gt; b; b; a"
+              >
+                ✗ Affirmation du conséquent : a =&gt; b; b; a
+              </option>
+              <option
+                value="(* Négation de l'antécédent - SOPHISME *) a =&gt; b; non a; non b"
+              >
+                ✗ Négation de l'antécédent : a =&gt; b; non a; non b
+              </option>
+              <option value="(* Non sequitur *) a; b">
+                ✗ Non sequitur : a; b
+              </option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Groupe de saisie: textarea + boutons -->
+        <div class="input-group">
+          <label for="enonce" class="visually-hidden">Énoncé logique</label>
+          <textarea
+            class="form-control"
+            id="enonce"
+            rows="1"
+            placeholder="Saisir énoncé... (Enter: valider, Shift+Enter: ↵)"
+            aria-describedby="bouton-Ok"
+          ></textarea>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="bouton-fichier"
+            onclick="document.getElementById('fichier-input').click()"
+            title="Charger un fichier"
+            aria-label="Charger un fichier"
+          >
+            📂
+          </button>
+          <input
+            type="file"
+            id="fichier-input"
+            accept=".txt,.pl"
+            class="hidden-input"
+          />
+          <button
+            class="btn btn-valider"
+            type="button"
+            id="bouton-Ok"
+            onclick="Ok()"
+            aria-label="Valider l'énoncé"
+          >
+            Valider
+          </button>
+        </div>
+
+        <!-- Zone de message d'erreur -->
+        <div class="text-center">
+          <span
+            class="form-label"
+            id="msg"
+            role="alert"
+            aria-live="polite"
+          ></span>
+        </div>
+      </section>
+
+      <!-- Section: Affichage du résultat -->
+      <section class="resultat-container hidden-section" id="resultat-section">
+        <div class="resultat-titre">Résultat de la démonstration</div>
+        <div id="target" aria-live="polite"></div>
+        <div class="btn-action-group">
+          <button
+            class="btn btn-pdf"
+            type="button"
+            onclick="genererPDF()"
+            title="Télécharger en PDF"
+          >
+            📄 Télécharger PDF
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER ============================================================ -->
+    <footer class="site-footer">
+      <div class="text-center p-3">
+        © 2026 Copyright,
+        <a href="mailto:ift-3000@ift.ulaval.ca">IFT-3000</a>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS =========================================================== -->
+
+    <!-- Bootstrap JS (bundle inclut Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- MathJax: Configuration et chargement ------------------------------ -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          packages: { "[+]": ["color", "amssymb"] },
+        },
+        svg: { fontCache: "global" },
+        loader: { load: ["[tex]/color"] },
+        options: {
+          // Cette option force l'héritage de la police du document pour le texte
+          enableMenu: false,
+        },
+        chtml: {
+          // FORCE MathJax à utiliser la police environnante pour \text{}
+          mtextInheritFont: true,
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+
+    <!-- Script OCaml compilé (js_of_ocaml) -------------------------------- -->
+    <script src="../_build/default/web/interface_web.bc.js"></script>
+
+    <!-- Script principal de l'application --------------------------------- -->
+    <script src="script.js" defer></script>
+
+    <!-- Ajoutés -------------------------------- -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+  </body>
+</html>

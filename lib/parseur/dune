@@ -1,0 +1,10 @@
+(ocamllex lexer)
+
+(menhir
+ (modules parser))
+
+(library
+ (name parseur)
+ (public_name tp1.parseur)
+ (private_modules lexer parser)
+ (wrapped false))

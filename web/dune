@@ -1,0 +1,7 @@
+(executable
+ (name interface_web)
+ (modules interface_web)
+ (modes js)
+ (libraries resolution parseur js_of_ocaml)
+ (preprocess
+  (pps js_of_ocaml-ppx)))
