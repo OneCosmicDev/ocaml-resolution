@@ -1,21 +1,26 @@
-# Résolution logique en OCaml — contribution et crédits
+# Mes contributions — Résolution logique en OCaml
 
-Ce travail du cours IFT-3000 à l'Université Laval, à l'hiver 2026, implémente des fonctions de résolution en logique propositionnelle. Elles permettent d'examiner si un ensemble d'hypothèses implique une conclusion.
+J’ai implémenté les fonctions demandées dans [lib/resolution.ml](lib/resolution.ml).
 
-## Ma contribution — Juan José Castilla Manrique
+- J’ai écrit `produit_cartesien` et `paires`, les fonctions utilitaires utilisées pour combiner les clauses et sélectionner leurs paires.
+- J’ai construit la proposition à résoudre à partir d’un énoncé avec `enonce_vers_proposition`.
+- J’ai implémenté les transformations logiques de `mise_en_forme_clausale`.
+- J’ai écrit `resolutions` pour produire les résolvantes de deux clauses.
+- J’ai assemblé ces étapes dans la procédure de décision `decision`.
 
-J'ai implémenté les fonctions demandées dans `lib/resolution.ml` :
+## Repères dans le code
 
-- les fonctions utilitaires `produit_cartesien` et `paires` ;
-- la transformation d'un énoncé en proposition avec `enonce_vers_proposition` ;
-- la conversion en forme clausale avec `mise_en_forme_clausale` ;
-- la production des résolvantes de deux clauses avec `resolutions` ;
-- la procédure de décision par résolution avec `decision`.
+- [lib/resolution.ml](lib/resolution.ml)
+- [test/test_resolution.ml](test/test_resolution.ml)
 
-Les commits [f558d77](https://github.com/OneCosmicDev/tp1-ift3000/commit/f558d77), [1ed0aa9](https://github.com/OneCosmicDev/tp1-ift3000/commit/1ed0aa9) et [90533ff](https://github.com/OneCosmicDev/tp1-ift3000/commit/90533ff) documentent cette progression. Le premier commit importe aussi des fichiers fournis : son auteur Git ne doit pas être interprété comme l'auteur de tout leur contenu.
+## Références de mon travail
 
-## Crédits et code fourni
+Je conserve ci-dessous les références de mes contributions. Elles renvoient aux dépôts de cours ; leur consultation peut demander un accès. Les liens vers les fichiers ci-dessus sont accessibles dans ce dépôt public.
 
-Le squelette du travail, les types, le parseur, les interfaces CLI et web, les exemples, les tests fournis et les fonctions identifiées comme fournies dans `resolution.ml` proviennent du matériel pédagogique du cours IFT-3000. Ma contribution porte sur les fonctions à compléter, pas sur l'ensemble de cet environnement.
+- [f558d77](https://github.com/OneCosmicDev/tp1-ift3000/commit/f558d77)
+- [1ed0aa9](https://github.com/OneCosmicDev/tp1-ift3000/commit/1ed0aa9)
+- [90533ff](https://github.com/OneCosmicDev/tp1-ift3000/commit/90533ff)
 
-Les anciens noms JuanAstroDev et The_OnlyJuanDev présents dans l'historique correspondent à [OneCosmicDev](https://github.com/OneCosmicDev).
+## Code fourni par le cours
+
+J’ai travaillé à partir du matériel pédagogique du cours IFT-3000. Le squelette, les types, le parseur, les interfaces CLI et web, les exemples, les tests et les fonctions indiquées comme fournies appartiennent à cette base. Ma contribution correspond aux fonctions à compléter dans le module de résolution.

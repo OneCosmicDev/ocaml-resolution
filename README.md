@@ -1,33 +1,40 @@
-# ocaml-resolution
+# Résolution logique en OCaml
 
-Résolution de problèmes de logique propositionnelle avec conversion en forme clausale et procédure de décision.
+J’ai réalisé ce travail de logique propositionnelle dans le cadre du cours IFT-3000 à l’Université Laval. J’y ai implémenté les fonctions de résolution nécessaires pour déterminer si un ensemble d’hypothèses implique une conclusion.
 
-**OCaml · Dune · Menhir · js_of_ocaml**
+**Université Laval · IFT-3000 · Hiver 2026**
 
-Copie portfolio d’un projet scolaire de Juan José Castilla Manrique ([OneCosmicDev](https://github.com/OneCosmicDev)). Les contributions de l’équipe et le matériel fourni par le cours sont crédités ci-dessous.
+**Début documenté : 7 février 2026** — [repères chronologiques](PROVENANCE.md#repères-chronologiques)
 
-## Ma contribution — Juan José Castilla Manrique
+**Technologies : OCaml · Dune · Menhir · js_of_ocaml**
 
-J'ai implémenté les fonctions demandées dans `lib/resolution.ml` :
+## Ce que fait le projet
 
-- les fonctions utilitaires `produit_cartesien` et `paires` ;
-- la transformation d'un énoncé en proposition avec `enonce_vers_proposition` ;
-- la conversion en forme clausale avec `mise_en_forme_clausale` ;
-- la production des résolvantes de deux clauses avec `resolutions` ;
-- la procédure de décision par résolution avec `decision`.
+Le programme transforme les hypothèses et la négation de la conclusion en une forme clausale, puis applique la règle de résolution. L’obtention d’une clause vide établit une contradiction et permet de conclure que les hypothèses impliquent la conclusion. Le projet comprend un parseur, une interface en ligne de commande, une interface web et des exemples fournis pour expérimenter avec les propositions.
 
-Les commits [f558d77](https://github.com/OneCosmicDev/tp1-ift3000/commit/f558d77), [1ed0aa9](https://github.com/OneCosmicDev/tp1-ift3000/commit/1ed0aa9) et [90533ff](https://github.com/OneCosmicDev/tp1-ift3000/commit/90533ff) documentent cette progression. Le premier commit importe aussi des fichiers fournis : son auteur Git ne doit pas être interprété comme l'auteur de tout leur contenu.
+## Ma contribution
 
-## Crédits et code fourni
+J’ai implémenté les fonctions demandées dans [lib/resolution.ml](lib/resolution.ml).
 
-Le squelette du travail, les types, le parseur, les interfaces CLI et web, les exemples, les tests fournis et les fonctions identifiées comme fournies dans `resolution.ml` proviennent du matériel pédagogique du cours IFT-3000. Ma contribution porte sur les fonctions à compléter, pas sur l'ensemble de cet environnement.
+- J’ai écrit `produit_cartesien` et `paires`, les fonctions utilitaires utilisées pour combiner les clauses et sélectionner leurs paires.
+- J’ai construit la proposition à résoudre à partir d’un énoncé avec `enonce_vers_proposition`.
+- J’ai implémenté les transformations logiques de `mise_en_forme_clausale`.
+- J’ai écrit `resolutions` pour produire les résolvantes de deux clauses.
+- J’ai assemblé ces étapes dans la procédure de décision `decision`.
 
-Les anciens noms JuanAstroDev et The_OnlyJuanDev présents dans l'historique correspondent à [OneCosmicDev](https://github.com/OneCosmicDev).
+Je détaille les fichiers et les références de mon travail dans [CONTRIBUTIONS.md](CONTRIBUTIONS.md).
 
+## Ce que j’ai appris
 
-Les références de PR et de commits pointent vers les dépôts pédagogiques d’origine, dont l’accès peut être restreint. La présente copie possède son propre historique de publication.
+J’ai appris à passer de règles de logique formelle à un algorithme exécutable. La mise en forme clausale m’a demandé de manipuler les implications, les équivalences et les négations en conservant le sens des propositions. La résolution m’a permis de relier la démonstration d’une implication à la recherche d’une contradiction.
 
-## Démarrer le projet
+Ce travail a aussi renforcé ma pratique de la programmation fonctionnelle : types algébriques, filtrage par motifs, récursion et transformations de listes. J’ai appris à décomposer le raisonnement en petites fonctions, puis à vérifier leur composition à partir des exemples et des tests fournis.
+
+## Code fourni par le cours
+
+J’ai travaillé à partir du matériel pédagogique du cours IFT-3000. Le squelette, les types, le parseur, les interfaces CLI et web, les exemples, les tests et les fonctions indiquées comme fournies appartiennent à cette base. Ma contribution correspond aux fonctions à compléter dans le module de résolution.
+
+## Lancer le projet
 
 Prérequis : OCaml 4.14 ou supérieur, Dune 3.17 ou supérieur, Menhir, js_of_ocaml et js_of_ocaml-ppx.
 
@@ -37,12 +44,8 @@ dune build
 dune runtest
 ```
 
-Le cœur de ma contribution se trouve dans `lib/resolution.ml`. Le parseur et les interfaces fournis permettent d’expérimenter avec les propositions ; les jeux d’exemples sont conservés dans `exemples/`.
+J’ai conservé les jeux d’exemples dans `exemples/` pour faciliter l’exploration des propositions.
 
-## État de cette publication
+## État du projet
 
-Cette version présente le travail scolaire et ses limites. Elle ne correspond pas à un service hébergé ni à un engagement de maintenance. Voir [PROVENANCE.md](PROVENANCE.md) pour la source, les adaptations de publication et les références vers le code.
-
-## Vérifications du 6 octobre 2026
-
-Sources inspectées, mais compilation et tests non exécutés : OCaml et Dune ne sont pas installés dans l’environnement de préparation.
+Je fournis les commandes de compilation et les tests du cours. La compilation et les tests n’ont pas été revérifiés pour cette version.
